@@ -1,0 +1,72 @@
+## mako
+<%page expression_filter="h"/>
+<%!
+  from django.core.urlresolvers import reverse
+  from django.utils.translation import ugettext as _
+  from django.conf import settings
+  from branding.api import get_footer
+%>
+<% footer = get_footer(is_secure=is_secure) %>
+<%namespace name='static' file='static_content.html'/>
+
+<footer class="theme-footer">
+  <div class="theme-footer_holder">
+    <div class="theme-footer_section">
+      <!-- <span class="theme-footer_text">If you have some questions please contact us</span>
+      <a class="theme-btn" href="/contact">Contact us</a> -->
+    </div>
+  </div>
+  <div class="theme-footer_holder theme-footer_holder__color">
+    <div class="theme-footer_wrapper">
+      <div class="theme-footer_col">
+        <h2 class="theme-footer_col-header">Acerca de</h2>
+        <div class="theme-footer_col-holder">
+          <a class="theme-footer_col-link" href="http://www.institutofrancisbacon.mx/">Instituto Francis Bacon</a>  
+        </div>
+        <div class="theme-footer_col-holder">
+          <a class="theme-footer_col-link" href="http://www.institutofrancisbacon.mx/nosotros-preparatoria-en-linea/">Nosotros</a>
+        </div>
+        <div class="theme-footer_col-holder">
+          <a class="theme-footer_col-link" href="http://www.institutofrancisbacon.mx/modelo-educativo/">Modelo educativo</a>
+        </div>
+        <div class="theme-footer_col-holder">
+          <a class="theme-footer_col-link" href="http://www.institutofrancisbacon.mx/bolsa-de-trabajo-preparatoria-en-linea/">Inscripciones</a>
+        </div>
+      </div>
+      <div class="theme-footer_col">
+        <h2 class="theme-footer_col-header">Plataforma</h2>
+        <div class="theme-footer_col-holder">
+          <a class="theme-footer_col-link" href="/honor">Código de Honor</a>
+        </div>
+	<div class="theme-footer_col-holder">
+          <a class="theme-footer_col-link" href="/privacy">Política de Privacidad</a>
+        </div>
+      </div>
+      <div class="theme-footer_col">
+        <h2 class="theme-footer_col-header">Contacto</h2>
+        <div class="theme-footer_col-holder">
+          <a class="theme-footer_col-link" href="http://www.institutofrancisbacon.mx/contacto-preparatoria-en-linea/">Contactanos</a>
+        </div>
+      </div>
+    </div>
+    <div class="theme-footer_section">
+      <div class="theme-footer_copyright">
+        © 2016 Instituto Francis Bacon. Todos los derechos reservados.
+        <a href="${footer['openedx_link']['url']}">
+          <img src="${footer['openedx_link']['image']}" alt="${footer['openedx_link']['title']}" width="140" />
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+% if include_dependencies:
+  <%static:js group='base_vendor'/>
+  <%static:css group='style-vendor'/>
+  <%include file="widgets/segment-io.html" />
+  <%include file="widgets/segment-io-footer.html" />
+% endif
+% if footer_css_urls:
+  % for url in footer_css_urls:
+    <link rel="stylesheet" type="text/css" href="${url}"></link>
+  % endfor
+% endif
