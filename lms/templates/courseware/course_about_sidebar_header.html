@@ -8,7 +8,7 @@ from django.conf import settings
 <header>
   % if static.get_value('course_about_show_social_links', True):
   <div class="social-sharing">
-    <div class="sharing-message">${_("Share with friends and family!")}</div>
+    <!--<div class="sharing-message">${_("Share with friends and family!")}</div> -->
     ## TODO: this should probably be an overrideable block,
     ##       or something allowing themes to do whatever they
     ##       want here (and on this whole page, really).
@@ -44,11 +44,11 @@ from django.conf import settings
             )
         ).replace(u" ", u"%20")
       %>
-      <ul class="social-list">
+      <!-- <ul class="social-list">
         <li class="social-list_item"><a class="social-list_link" href="https://twitter.com/raccoongangcom"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
         <li class="social-list_item"><a class="social-list_link" href="https://www.facebook.com/raccoongangco"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
         <li class="social-list_item"><a class="social-list_link" href="https://www.linkedin.com/company/raccoon-gang"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-      </ul>
+      </ul> -->
   </div>
   % endif
 </header>
